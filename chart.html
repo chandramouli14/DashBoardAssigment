@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Muli:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+		integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+	<script src="bundle.js"></script>
+	<link rel="stylesheet" type="text/html" href="styles.css">
+	<script>
+		window.onload = async function () {
+			let tasksList;
+			await fetch("http://localhost:3000/tasks")
+				.then(res => res.json().then(res => tasksList = res))
+			var doTasks = [];
+			var doingTasks = [];
+			var doneTasks = [];
+			if (tasksList.length > 0) {
+				tasksList.forEach(element => {
+					if (element.status == "toDo") {
+						doTasks.push(element)
+					}
+					else if (element.status == "done") {
+						doneTasks.push(element)
+					}
+					else if (element.status == "inProgress") {
+						doingTasks.push(element)
+					}
+				})
+			}
+			var chart = new CanvasJS.Chart("chartContainer", {
+				animationEnabled: true, theme: "light2",
+				title: {
+					text: "Pie Chart View Of Tasks:"
+				},
+				data: [{
+					type: "doughnut",
+					startAngle: 90,
+					indexLabelFontSize: 24,
+					radius: 500,
+					yValueFormatString: "##0.00\"%\"",
+					indexLabel: "{label} {y}",
+					click: explodePie,
+					dataPoints: [
+						{ y: GetTaskPercentage("toDo"), label: "TODO" },
+						{ y: GetTaskPercentage("inProgress"), label: "INPROGRESS" },
+						{ y: GetTaskPercentage("done"), label: "DONE" }
+					]
+				}]
+			});
+			chart.render();
+
+			function GetTaskPercentage(type) {
+				if (type == "toDo") {
+					return doTasks.length > 0 ?
+						100 * doTasks.length / (doTasks.length + doneTasks.length + doingTasks.length) :
+						0;
+				}
+				else if (type == "done") {
+					return doneTasks.length > 0 ?
+						100 * doneTasks.length / (doTasks.length + doneTasks.length + doingTasks.length) :
+						0;
+				}
+				else if (type == "inProgress") {
+					return doingTasks.length > 0 ?
+						100 * doingTasks.length / (doTasks.length + doneTasks.length + doingTasks.length) :
+						0;
+				}
+			}
+
+			function explodePie(e) {
+				for (var i = 0; i < e.dataSeries.dataPoints.length; i++) {
+					if (i !== e.dataPointIndex)
+						e.dataSeries.dataPoints[i].exploded = false;
+				}
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<div class="sidenav">
+		<a href="index.html" name="dashBoard"><i class="fa fa-laptop"></i></a>
+		<a href="#stream"><i class="fa fa-stream"></i></span></a>
+		<a href="chart.html"><i class="fa fa-chart-line"></i></span></a>
+		<a href="addTask.html"><i class="fa fa-plus-circle"></i></a>
+		<a href="#pin"><i class="fa fa-thumbtack"></i></a>
+		<a href="#settings" class="fixed-bottom"><i class="fa fa-cog"></i></a>
+	</div>
+	<div class="main">
+		<div class="container my-5 py-5">
+			<div id="chartContainer" style="height: 370px; padding-top:50px">
+				<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+			</div>
+		</div>
+	</div>
+	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+
+</html>

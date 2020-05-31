@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Muli:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/html" href="styles.css">
+    <script src="/bundle.js"></script>
+</head>
+
+<body>
+
+    <div class="sidenav">
+        <a href="index.html" name="dashBoard"><i class="fa fa-laptop"></i></a>
+        <a href="#stream"><i class="fa fa-stream"></i></span></a>
+        <a href="chart.html"><i class="fa fa-chart-line"></i></span></a>
+        <a href="addTask.html"><i class="fa fa-plus-circle"></i></a>
+        <a href="#pin"><i class="fa fa-thumbtack"></i></a>
+        <a href="#settings" class="fixed-bottom"><i class="fa fa-cog"></i></a>
+
+    </div>
+
+    <div class="main">
+        <h3>Scrum in Space</h3>
+        <h1>Mars Landing!</h1>
+        <b>QUICK FILTERS:</b><a href="#myissues">Only My Issues</a><a href="#recentlyUpdated">Recently
+            Updated</a>
+        <hr />
+        <!-- <div class="row m-6">
+            <div class="col-lg  mx-1">
+                <div class="d-flex justify-content-left  m-2">
+                    <h5>TODO</h5>
+                </div>
+            </div>
+            <div class="col-lg  mx-1">
+                <div class="d-flex justify-content-left m-2">
+                    <h5>IN PROGRESS</h5>
+                </div>
+            </div>
+            <div class="col-lg mx-1">
+                <div class="d-flex justify-content-left  m-2">
+                    <h5>DONE</h5>
+                </div>
+            </div>
+        </div> -->
+        <div id="dashboard">
+            <div class="d-flex justify-content-center my-4 pull-right">
+                <div class="d-flex justify-content-center bg-light p-2 pull-right" ondrop="drop(event)"
+                    ondragover="allowDrop(event)" id="delete">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </div>
+            </div>
+
+            <div class="row m-6">
+                <div class="col-lg bg-light  mx-2 " id="toDo" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="d-flex justify-content-left  m-2">
+                        <h5>TODO</h5>
+                    </div>
+                </div>
+                <div class="col-lg bg-light mx-2" id="inProgress" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="d-flex justify-content-left m-2">
+                        <h5>IN PROGRESS</h5>
+                    </div>
+                </div>
+                <div class="col-lg bg-light mx-2" id="devDone" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="d-flex justify-content-left m-2">
+                        <h5>DEV DONE</h5>
+                    </div>
+                </div>
+                <div class="col-lg bg-light mx-2" id="inQA" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="d-flex justify-content-left m-2">
+                        <h5>IN QA</h5>
+                    </div>
+                </div>
+
+                <div class="col-lg bg-light mx-2" id="done" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="d-flex justify-content-left  m-2">
+                        <h5>DONE</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

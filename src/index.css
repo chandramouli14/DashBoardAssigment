@@ -1,0 +1,84 @@
+body {
+    font-family: "Lato", sans-serif;
+}
+.columnOne{
+    text-align: right;
+    padding-top: 0.4em;
+    margin: 0em;
+}
+.columnTwo{
+    text-align: left;
+    padding: 0em;
+    margin-bottom: 0.2em;
+}
+.backnavStyle
+{
+    color: lightgrey;
+    background-color: whitesmoke;
+    width: 1.75em;
+    height: 1.75em;
+    border-radius: 1em;
+    text-align: center;
+    padding-top: 0.3em;
+    font-size: 2em;
+    top: 0.5em;
+    left: 0.2em;
+}
+i{
+    margin-right :10px;
+    font-size:20px;
+    color:rgb(201, 192, 192);
+}
+.sidenav {
+    height: 100%;
+    width: 50px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: grey;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+span {
+    color: black
+}
+
+.sidenav a,
+i:hover {
+    color: gold
+}
+
+h2 {
+    margin-top: 10px;
+}
+
+a {
+    padding-left: 10px;
+}
+
+.main {
+    margin-left: 60px;
+    font-size: 15px; 
+    padding: 0px 10px;
+   
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
