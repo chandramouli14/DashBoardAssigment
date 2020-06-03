@@ -1,106 +1,112 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "name": "New task Going to add",
-      "content": "dbfbdfjbd dfdgffb",
-      "status": "toDo"
-    },
-    {
-      "id": 2,
-      "name": "New task Going to add",
-      "content": "dbfbdfjbd dfdgffb",
-      "status": "inProgress"
-    },
-    {
-      "id": 4,
-      "name": "New task Going to add",
-      "content": "dbfbdfjbd dfdgffb",
-      "status": "toDo"
-    },
-    {
-      "status": "inProgress",
-      "name": "sdsdssdsd",
-      "content": "sdsdsd",
-      "id": 6
+      "status": "devDone",
+      "name": "Task One",
+      "content": "Intialize the data",
+      "assignee": "Chandramouli",
+      "priority": "Low",
+      "id": 24
     },
     {
       "status": "toDo",
-      "name": "sdsdssdsd",
-      "content": "sdsd",
-      "id": 7
-    },
-    {
-      "status": "toDo",
-      "name": "sdsdsd",
-      "content": "sdsdsd",
-      "id": 9
-    },
-    {
-      "status": "done",
-      "name": "sd",
-      "content": "sdsdsd",
-      "id": 12
-    },
-    {
-      "status": "inProgress",
-      "name": "sfdfdfdfdfdffefer",
-      "content": "ererererrere",
-      "id": 13
-    },
-    {
-      "status": "inProgress",
       "name": "new  Task",
-      "content": "going to lunch",
-      "id": 15
+      "content": "sdsdsd",
+      "assignee": "Chandramouli",
+      "priority": "Medium",
+      "id": 25
     },
     {
-      "status": "done",
-      "name": "my fgf",
-      "content": "fgfg",
-      "id": 16
+      "status": "devDone",
+      "name": "sdsd",
+      "content": "sdsdsd",
+      "assignee": "Chandramouli",
+      "priority": "High",
+      "id": 28
+    },
+    {
+      "status": "inProgress",
+      "name": "sdsd",
+      "assignee": "Chandramouli",
+      "priority": "Medium",
+      "id": 29
+    },
+    {
+      "status": "inQA",
+      "name": "sdsdssdsd",
+      "assignee": "Chandramouli",
+      "priority": "Medium",
+      "id": 30
+    },
+    {
+      "status": "inQA",
+      "name": "sdsd",
+      "assignee": "Chandu",
+      "priority": "Medium",
+      "id": 31
     },
     {
       "status": "toDo",
-      "name": "asfdf",
-      "content": "dfdf",
-      "id": 17
+      "name": "sdsdssdsd",
+      "assignee": "Chandramouli",
+      "priority": "High",
+      "id": 32
+    },
+    {
+      "status": "done",
+      "name": "sdsdsd",
+      "assignee": "Chandu",
+      "priority": "Medium",
+      "id": 33
+    },
+    {
+      "status": "toDo",
+      "name": "sdsd",
+      "assignee": "Chandu",
+      "priority": "Low",
+      "id": 34
     },
     {
       "status": "done",
       "name": "sdsd",
-      "content": "dsdsd",
-      "id": 18
-    },
-    {
-      "status": "toDo",
-      "name": "dee",
-      "content": "dsdsd",
-      "id": 19
-    },
-    {
-      "status": "inProgress",
-      "name": "sdsdsd",
-      "content": "dsdsd",
-      "id": 20
+      "assignee": "Chandu",
+      "priority": "Low",
+      "id": 35
     },
     {
       "status": "toDo",
       "name": "sdsdssdsd",
-      "content": "sdsd",
-      "id": 21
+      "assignee": "Chandu",
+      "priority": "High",
+      "id": 37
+    },
+    {
+      "status": "done",
+      "name": "sdsd",
+      "assignee": "Chandu",
+      "priority": "Low",
+      "id": 38
+    },
+    {
+      "status": "done",
+      "name": "sdsdssdsd",
+      "assignee": "Chandramouli",
+      "priority": "Medium",
+      "id": 39
     },
     {
       "status": "inProgress",
-      "name": "my new Task",
-      "content": "sample task",
-      "id": 22
+      "name": "sdsdsd",
+      "assignee": "Chandu",
+      "priority": "High",
+      "id": 40
     },
     {
-      "status": "inProgress",
-      "name": "my new task2",
-      "content": "sdsd",
-      "id": 23
+      "status": "devDone",
+      "name": "Aj",
+      "assignee": "Ajay",
+      "priority": "Medium",
+      "id": 41
     }
   ]
 }
