@@ -1,7 +1,7 @@
 {
   "tasks": [
     {
-      "status": "devDone",
+      "status": "35",
       "name": "Task One",
       "content": "Intialize the data",
       "assignee": "Chandramouli",
@@ -9,15 +9,7 @@
       "id": 24
     },
     {
-      "status": "toDo",
-      "name": "new  Task",
-      "content": "sdsdsd",
-      "assignee": "Chandramouli",
-      "priority": "Medium",
-      "id": 25
-    },
-    {
-      "status": "devDone",
+      "status": "DONE",
       "name": "sdsd",
       "content": "sdsdsd",
       "assignee": "Chandramouli",
@@ -25,88 +17,81 @@
       "id": 28
     },
     {
-      "status": "inProgress",
+      "status": "IN QA",
       "name": "sdsd",
       "assignee": "Chandramouli",
       "priority": "Medium",
       "id": 29
     },
     {
-      "status": "inQA",
+      "status": "IN QA",
       "name": "sdsdssdsd",
       "assignee": "Chandramouli",
       "priority": "Medium",
       "id": 30
     },
     {
-      "status": "inQA",
-      "name": "sdsd",
-      "assignee": "Chandu",
-      "priority": "Medium",
-      "id": 31
-    },
-    {
-      "status": "toDo",
-      "name": "sdsdssdsd",
+      "status": "IN PROGRESS",
+      "name": "change task name",
       "assignee": "Chandramouli",
       "priority": "High",
       "id": 32
     },
     {
-      "status": "done",
-      "name": "sdsdsd",
-      "assignee": "Chandu",
-      "priority": "Medium",
-      "id": 33
-    },
-    {
-      "status": "toDo",
-      "name": "sdsd",
-      "assignee": "Chandu",
-      "priority": "Low",
-      "id": 34
-    },
-    {
-      "status": "done",
+      "status": "IN PROGRESS",
       "name": "sdsd",
       "assignee": "Chandu",
       "priority": "Low",
       "id": 35
     },
     {
-      "status": "toDo",
-      "name": "sdsdssdsd",
+      "status": "TO DO",
+      "name": "going to edit",
       "assignee": "Chandu",
-      "priority": "High",
+      "priority": "Medium",
       "id": 37
     },
     {
-      "status": "done",
+      "status": "DONE",
       "name": "sdsd",
       "assignee": "Chandu",
       "priority": "Low",
       "id": 38
     },
     {
-      "status": "done",
+      "status": "DEV DONE",
       "name": "sdsdssdsd",
       "assignee": "Chandramouli",
       "priority": "Medium",
       "id": 39
     },
     {
-      "status": "inProgress",
+      "status": "DONE",
       "name": "sdsdsd",
       "assignee": "Chandu",
       "priority": "High",
       "id": 40
     },
     {
-      "status": "devDone",
+      "status": "TO DO",
       "name": "Aj",
       "assignee": "Ajay",
-      "priority": "Medium",
+      "priority": "High",
       "id": 41
+    },
+    {
+      "status": "TO DO",
+      "name": "sdsdssdsd",
+      "assignee": "Chandramouli",
+      "priority": "Medium",
+      "id": 42
     }
-  ]
+  ],
+  "labels": {
+    "TO DO": "TO DO",
+    "IN PROGRESS": "IN PROGRESS",
+    "DEV DONE": "DEV DONE",
+    "IN QA": "IN QA",
+    "DONE": "DONE"
+  }
 }

@@ -3,6 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -10,6 +11,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/html" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -17,57 +21,29 @@
         <a onclick="showView('dashBoard')"><i class="fa fa-laptop"></i></a>
         <a onclick="showView('chartView')"><i class="fa fa-chart-line"></i></span></a>
         <a onclick="showView('addTask')"><i class="fa fa-plus-circle"></i></a>
-        <a class="fixed-bottom" onclick="showView('settings')"><i class="fa fa-cog"></i></a>
+        <a  onclick="showView('settings')"><i class="fa fa-cog"></i></a>
     </div>
 
     <div class="main">
         <div id="dashBoard">
             <h3 class="text-secondary">Scrum in Space</h3>
-            <h1 class="text-dark">Mars Landing!</h1>
-            <!-- <span class="text-dark">QUICK FILTERS:</span><a href="#myissues">Only My Issues</a><a
-                href="#recentlyUpdated">Recently
-                Updated</a> -->
-                
-            <hr />
-            <div class="d-flex justify-content-center my-4 pull-right" style="float:right">
-                <div class="d-flex justify-content-center bg-gradient-light p-2 pull-right" ondrop="drop(event)"
-                    ondragover="allowDrop(event)" id="delete">
-                    <i class="fa fa-trash  text-dark"></i>
-                </div>
-            </div>
-
+            <h1 class="text-info">Mars Landing!</h1>
             <div class="row m-6">
-                <div class="col-lg bg-light mx-2 " id="toDo" ondrop="drop(event)" ondragover="allowDrop(event)">
-                    <div class="d-flex justify-content-left  m-2">
-                        <h5>TODO</h5>
-                    </div>
-                </div>
-                <div class="col-lg bg-light mx-2" id="inProgress" ondrop="drop(event)" ondragover="allowDrop(event)">
-                    <div class="d-flex justify-content-left m-2">
-                        <h5>IN PROGRESS</h5>
-                    </div>
-                </div>
-                <div class="col-lg bg-light mx-2" id="devDone" ondrop="drop(event)" ondragover="allowDrop(event)">
-                    <div class="d-flex justify-content-left m-2">
-                        <h5>DEV DONE</h5>
-                    </div>
-                </div>
-                <div class="col-lg bg-light mx-2" id="inQA" ondrop="drop(event)" ondragover="allowDrop(event)">
-                    <div class="d-flex justify-content-left m-2">
-                        <h5>IN QA</h5>
-                    </div>
-                </div>
-
-                <div class="col-lg bg-light mx-2" id="done" ondrop="drop(event)" ondragover="allowDrop(event)">
-                    <div class="d-flex justify-content-left  m-2">
-                        <h5>DONE</h5>
-                    </div>
-                </div>
+                <label for="filter" class="text-secondary">Select the Label to filter:</label>
+                <select multiple="multiple" id="myMulti">
+                </select>
             </div>
+            <hr />
+
+            <div class="row m-6" id="labelsDiv">
+            </div>
+
         </div>
 
         <div id="addTask" align="center" class="hide">
-            <h2 class="text-success ">Add Your Task <hr></h2>
+            <h2 class="text-success ">Add Your Task
+                <hr>
+            </h2>
             <br />
             <form class="needs-validation" id="addTask" onsubmit="addNewTask()">
                 <div class="form-group">
@@ -108,11 +84,6 @@
                     <div class="col-sm-3 columnTwo">
                         <select class="form-control" id="status">
                             <option value="none" selected="true" disabled>Select type</option>
-                            <option value="toDo">To-do</option>
-                            <option value="inProgress">In-progress</option>
-                            <option value="devDone">DEV Done</option>
-                            <option value="inQA">In-QA</option>
-                            <option value="done">Done</option>
                         </select>
                     </div>
                 </div>
@@ -125,56 +96,90 @@
                 </div>
             </form>
         </div>
+
         <div id="chartView" align="center" class="hide">
             <div class="container my-5 py-5 ">
                 <div id="chartContainer" style="height: 370px; padding-top:50px;">
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit Task Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="task-name" class="col-form-label">Task Name:</label>
+                    <input type="text" class="form-control" id="editTaskName">
+                  </div>
+                  <div class="form-group">
+                    <label for="assignee-name" class="col-form-label">Assigned To:</label>
+                    <input type="text" class="form-control" id="editAssignName">
+                  </div>
+                  <div class="form-group">
+                    <label for="priority" class="col-form-label">Priority Of Task:</label>
+                    <select class="form-control" id="editPriority">
+                        <option value="none" selected="true" disabled>Select Priority</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="status" class="col-form-label">Status Of Task:</label>
+                    <select class="form-control" id="editStatus">
+                        <option value="none" selected="true" disabled>Select type</option>
+                    </select>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="sendEditTask()">Send message</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         <div id="settings" align=center class="hide">
-            <h2 class="text-secondary ">Customize Your DashBoard <hr /></h2>
+            <h2 class="text-secondary ">Customize Your DashBoard
+                <hr />
+            </h2>
             <br />
-            <form class="needs-validation" id="addLabels" onsubmit="addNewTask()">
-                <div class="form-group">
-                    <div class="col-sm-4 columnTwo">
-                        <label for="name">
-                            <h3 class="text-info">Select the Labels of Tasks to filter:</h3>
-                        </label>
-                    </div>
-                    <div class="col-lg-3 columnTwo">
-                        <input class="form-check-input" id="selectall" type="checkbox" checked="true" onclick="selectAll()">
-                        Select All
-                        </input><br>
-                        <input class="form-check-input labelSelected" type="checkbox" id="checkTodo" name="toDo" onclick="ShowLabels(event.target)"required>
-                        <label class="form-check-label" for="defaultCheck2">
-                            TO DO
-                        </label>
-                        <br>
-                        <input class="form-check-input labelSelected" type="checkbox" id="checkInprogress" name="inProgress" onclick="ShowLabels(event.target)" required>
-                        <label class="form-check-label" for="defaultCheck1">
-                            IN PROGRESS
-                        </label><br>
-    
-                        <input class="form-check-input labelSelected" type="checkbox" id="checkDevdone" name="devDone" onclick="ShowLabels(event.target)" required>
-                        <label class="form-check-label" for="invalidCheck">
-                            DEV DONE
-                        </label><br>
-                        <input class="form-check-input labelSelected" type="checkbox" id="checkInqa" name="inQA" onclick="ShowLabels(event.target)" required>
-                        <label class="form-check-label" for="defaultCheck1">
-                            IN QA
-                        </label><br>
-                        <input class="form-check-input labelSelected" type="checkbox" id="checkDone" name="done" onclick="ShowLabels(event.target)" required>
-                        <label class="form-check-label" for="defaultCheck1">
-                            DONE
-                        </label>
-                    </div>
+
+            <div class="form-group">
+                <div class="col-sm-4 columnTwo">
+                    <label for="name">
+                        <h4 class="text-info">Select the Labels to Delete:</h4>
+                    </label>
                 </div>
-            </form>
+                <div class="col-lg-3 columnTwo" id="checkboxLabel">
+                    <input id="selectAll" type="checkbox" onclick="All()" />
+                    <label>Select All</label>
+                    <br>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-3 columnTwo">
+                    <button type="submit" class="btn btn-primary mb-2" onclick="deleteLabels()">Delete</button>
+                    <button type="submit" class="btn btn-success mb-2" onclick="addNewLabel()">Add New Label</button>
+                </div>
+            </div>
         </div>
     </div>
-  
+
+
     <script src="/bundle.js"></script>
     <script src="src/canvasjs.js"></script>
+
 </body>
 
 </html>
