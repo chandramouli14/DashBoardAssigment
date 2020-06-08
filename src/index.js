@@ -1,6 +1,14 @@
 let taskList;
 let url = "http://localhost:3000/tasks/";
 let labelsSelected;
+let lablesObj = {
+    "TO DO": "TO DO",
+    "IN PROGRESS": "IN PROGRESS",
+    "DEV DONE": "DEV DONE",
+    "IN QA": "IN QA",
+    "DONE": "DONE"
+}
+//localStorage.setItem("labels",JSON.stringify(lablesObj));
 
 
 //Vanilla Script for  multiSelect DropDown
@@ -548,7 +556,6 @@ function vanillaSelectBox_type(target) {
 //**Javascript Code for UI**//
 
 //filter the label for display in dashboard
-
 function hideLabel(event) {
     let activelabels = document.getElementsByClassName("active")
     if (event.target.className == "active") {
@@ -589,7 +596,6 @@ function addDeleteCheckBox(label) {
 }
 
 //For selecting all the checkBoxes for delete
-
 function All() {
     labels = document.getElementsByClassName("labelSelected");
     Object.values(labels).map(label => {
@@ -599,7 +605,6 @@ function All() {
 }
 
 //For select/deselect the individual checkbox
-
 function ShowLabels(label) {
     labels = document.getElementsByClassName("labelSelected");
     if (label.checked) {
@@ -613,7 +618,6 @@ function ShowLabels(label) {
 }
 
 //Delete the labels from dashboard & settings page
-
 function deleteLabels() {
     let deleteSelected = Object.values(labels).filter(label => label.checked == true)
     if (deleteSelected.length > 0) {
@@ -627,7 +631,8 @@ function deleteLabels() {
             else {
                 deleteDiv.remove();
                 delete labelsSelected[label.name]
-                updateTask("http://localhost:3000/labels", labelsSelected)
+                localStorage.setItem("labels",JSON.stringify(labelsSelected))
+               // updateTask("http://localhost:3000/labels", labelsSelected)
                 Object.values(document.getElementsByTagName("option")).filter(key => key.value == "sample").forEach(key => key.remove())
                 Object.values(document.getElementsByName("sample")).forEach(node => node.remove())
             }
@@ -642,11 +647,12 @@ function deleteLabels() {
 //Add new label for an task to display in dashboard and settings
 
 function addNewLabel() {
-    var label = prompt("Please enter your name", "labelName");
+    var label = prompt("Please enter your Label name", "labelName");
     if (label != null) {
         label = label.toUpperCase();
         labelsSelected[label] = label;
-        updateTask("http://localhost:3000/labels", labelsSelected);
+        localStorage.setItem("labels",JSON.stringify(labelsSelected))
+        //updateTask("http://localhost:3000/labels", labelsSelected);
         window.location.href = "index.html"
     }
 }
@@ -654,7 +660,8 @@ function addNewLabel() {
 //Intialize the data of tasks,labels in dashboard
 
 async function intialize() {
-    await getTasks("http://localhost:3000/labels").then(res => res.json().then(data => labelsSelected = data));
+    //await getTasks("http://localhost:3000/labels").then(res => res.json().then(data => labelsSelected = data));
+    labelsSelected=JSON.parse(localStorage.getItem("labels"));
     getTasks(url).then(res => res.json().then(tasks => {
         taskList = tasks;
         taskList.map(task => CreateTask(task));
@@ -861,9 +868,9 @@ function CreateTask(task) {
         equals.className = "fa fa-equals icon  text-warning"
         let close = document.createElement("span");
         close.className = "fa fa-trash deleteStyle text-danger";
-        close.setAttribute("data-dismiss","modal")
+        close.setAttribute("data-dismiss", "modal")
         close.onclick = clearTask
-        check.id=equals.id=task.id;
+        check.id = equals.id = task.id;
         icons.append(check, equals);
         body.setAttribute("class", "card-body");
         card.setAttribute("class", "card my-8");
@@ -871,10 +878,10 @@ function CreateTask(task) {
         wrapper.setAttribute("class", "d-flex justify");
         wrapper.setAttribute("draggable", "true");
         wrapper.setAttribute("ondragstart", "drag(event)");
-        wrapper.id = card.id = close.id = body.id =icon.id=icons.id=title.id=priority.id=assignee.id=taskName.id= task.id;
+        wrapper.id = card.id = close.id = body.id = icon.id = icons.id = title.id = priority.id = assignee.id = taskName.id = task.id;
         wrapper.style.cursor = "grab"
         body.append(title, taskName, assignee, priority, icons);
-        card.append(body,close);
+        card.append(body, close);
         body.setAttribute("data-toggle", "modal");
         body.setAttribute("data-target", "#editModal")
         body.onclick = editTask
@@ -890,7 +897,6 @@ let editStatus = document.getElementById("editStatus")
 
 //edit the task data with popup
 function editTask(event) {
-    debugger
     let editTask = taskList.find(t => t.id == event.target.id);
     if (editTask) {
         localStorage.setItem("editId", editTask.id)
@@ -923,18 +929,17 @@ function sendEditTask() {
     task.assignee = editAssign.value;
     task.priority = editPriority.value;
     task.id = localStorage.getItem("editId")
-    if(task.id){
-    updateTask(url + task.id, task)
-        .then((res) => {
-            window.location.href = "index.html"
-        })
+    if (task.id) {
+        updateTask(url + task.id, task)
+            .then((res) => {
+                window.location.href = "index.html"
+            })
     }
 }
 
 //remove the task on click delete icon in the task
 function clearTask(task) {
     let taskId = event.target.id;
-    debugger;
     var task = document.getElementById(taskId);
     task.remove();
     removeTask(url + taskId);
@@ -958,9 +963,9 @@ function drop(ev) {
         ev.target.appendChild(document.getElementById(data));
         changeStatus(data, ev.target.id)
     }
-    else if (ev.target.parentElement.parentElement.parentElement) {
-        ev.target.parentElement.parentElement.parentElement.appendChild(document.getElementById(data));
-        changeStatus(data, ev.target.parentElement.parentElement.parentElement.id)
+    else {
+        document.getElementById(ev.target.id).parentElement.appendChild(document.getElementById(data));
+        changeStatus(data, document.getElementById(ev.target.id).parentElement.id)
     }
 }
 //Update the status on drag and drop

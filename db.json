@@ -24,7 +24,7 @@
       "id": 29
     },
     {
-      "status": "IN QA",
+      "status": "IN PROGRESS",
       "name": "sdsdssdsd",
       "assignee": "Chandramouli",
       "priority": "Medium",
@@ -38,7 +38,7 @@
       "id": 32
     },
     {
-      "status": "IN PROGRESS",
+      "status": "DEV DONE",
       "name": "sdsd",
       "assignee": "Chandu",
       "priority": "Low",
@@ -59,7 +59,7 @@
       "id": 38
     },
     {
-      "status": "DEV DONE",
+      "status": "IN QA",
       "name": "sdsdssdsd",
       "assignee": "Chandramouli",
       "priority": "Medium",
